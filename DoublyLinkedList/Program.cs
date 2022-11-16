@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace DoublyLinkedList
 {
+    class Node
+    {
+        /*Node class represents the node of doubly linked list.*/
+        public int rollNumber;
+        public string name;
+        public Node next;
+        public Node prev;
+    }
     internal class Program
     {
         static void Main(string[] args)
