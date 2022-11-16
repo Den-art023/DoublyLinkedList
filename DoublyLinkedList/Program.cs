@@ -59,6 +59,25 @@ namespace DoublyLinkedList
                     return;
                 }
             }
+            newnode.next = current;
+            newnode.prev = previous;
+            /*if the node is to be inserted at the end of the list.*/
+            if(current == null)
+            {
+                newnode.next = null;
+                previous.next = newnode;
+                return;
+            }
+            current.prev = newnode;
+            previous.next = newnode;
+        }
+        /*Checks wheteher the specified node is present*/
+        public bool Search(int rollNo, ref Node previous, ref Node current)
+        {
+            for(previous = current = START; current != null &&
+                rollNo != current.rollNumber; previous = current,
+                current = current.next) { }
+            return (current != null);
         }
     }
     internal class Program
