@@ -86,14 +86,14 @@ namespace DoublyLinkedList
             previous = current = null;
             if(Search(rollNo, ref previous, ref current) == false)
                 return false;
-            if(current == START)
+            if(current == START)/*If the first node is to be deleted*/
             {
                 START = START.next;
                 if(START != null)
                     START.prev = null;
                 return true;
             }
-            if(current.next == null)
+            if(current.next == null)/*If the last node is to be deleted*/
             {
                 previous.next = null;
                 return true;
@@ -101,6 +101,43 @@ namespace DoublyLinkedList
             previous.next = current.next;
             current.next.prev = previous;
             return true;
+        }
+
+        /*Traverses the list*/
+        public void traverse()
+        {
+            if (listEmpty())
+                Console.WriteLine("\nList is empty");
+            else
+            {
+                Console.WriteLine("\nRecords in the ascending order of " + "roll numbers are:\n");
+                Node currentNode;
+                for (currentNode = START; currentNode != null;
+                    currentNode = currentNode.next)
+                    Console.Write(currentNode.rollNumber + "   "
+                        + currentNode.name + "\n");
+            }
+        }
+
+        /*Traverses the list in the reverse direction*/
+        public void revtraverse()
+        {
+            if (listEmpty())
+                Console.WriteLine("\nList is empty");
+            else
+            {
+                Console.WriteLine("\nRecords in the descending order of "
+                    + "roll numbers are:\n");
+                Node currentNode;
+                for(currentNode = START; currentNode.next != null;
+                    currentNode = currentNode.next) { }
+                while(currentNode != null)
+                {
+                    Console.Write(currentNode.rollNumber + "   "
+                        + currentNode.name + "\n");
+                    currentNode = currentNode.prev;
+                }
+            }
         }
     }
     internal class Program
